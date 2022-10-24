@@ -31,7 +31,7 @@ _puts:
 	movq	-24(%rbp), %rax
 	addq	%rdx, %rax
 	movzbl	(%rax), %eax
-	cmpb	$10, %al
+	testb	%al, %al
 	jne	.L3
 	movl	$10, %edi
 	call	_putchar@PLT
