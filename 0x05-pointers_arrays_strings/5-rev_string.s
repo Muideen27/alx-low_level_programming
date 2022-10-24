@@ -12,52 +12,52 @@ rev_string:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	movq	%rdi, -24(%rbp)
-	movl	$0, -12(%rbp)
+	movq	-24(%rbp), %rax
+	movzbl	(%rax), %eax
+	movb	%al, -9(%rbp)
 	movl	$0, -8(%rbp)
 	jmp	.L2
 .L3:
-	addl	$1, -12(%rbp)
+	addl	$1, -8(%rbp)
 .L2:
-	movl	-12(%rbp), %eax
+	movl	-8(%rbp), %eax
 	movslq	%eax, %rdx
 	movq	-24(%rbp), %rax
 	addq	%rdx, %rax
 	movzbl	(%rax), %eax
 	testb	%al, %al
 	jne	.L3
+	movl	$0, -4(%rbp)
 	jmp	.L4
 .L5:
-	movl	-12(%rbp), %eax
+	subl	$1, -8(%rbp)
+	movl	-4(%rbp), %eax
 	movslq	%eax, %rdx
 	movq	-24(%rbp), %rax
 	addq	%rdx, %rax
 	movzbl	(%rax), %eax
-	movsbl	%al, %eax
-	movl	%eax, -4(%rbp)
+	movb	%al, -9(%rbp)
 	movl	-8(%rbp), %eax
-	movslq	%eax, %rdx
-	movq	-24(%rbp), %rax
-	leaq	(%rdx,%rax), %rcx
-	movl	-12(%rbp), %eax
-	leal	-1(%rax), %edx
-	movl	%edx, -12(%rbp)
-	movslq	%eax, %rdx
-	movq	-24(%rbp), %rax
-	addq	%rax, %rdx
-	movzbl	(%rcx), %eax
-	movb	%al, (%rdx)
-	movl	-8(%rbp), %eax
-	leal	1(%rax), %edx
-	movl	%edx, -8(%rbp)
 	movslq	%eax, %rdx
 	movq	-24(%rbp), %rax
 	addq	%rdx, %rax
 	movl	-4(%rbp), %edx
-	movb	%dl, (%rax)
+	movslq	%edx, %rcx
+	movq	-24(%rbp), %rdx
+	addq	%rcx, %rdx
+	movzbl	(%rax), %eax
+	movb	%al, (%rdx)
+	movl	-8(%rbp), %eax
+	movslq	%eax, %rdx
+	movq	-24(%rbp), %rax
+	addq	%rax, %rdx
+	movzbl	-9(%rbp), %eax
+	movb	%al, (%rdx)
+	addl	$1, -4(%rbp)
 .L4:
-	movl	-12(%rbp), %eax
+	movl	-4(%rbp), %eax
 	cmpl	-8(%rbp), %eax
-	jg	.L5
+	jl	.L5
 	nop
 	nop
 	popq	%rbp
