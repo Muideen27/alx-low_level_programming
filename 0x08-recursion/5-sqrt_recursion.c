@@ -14,17 +14,17 @@ int _sqrt_recursion(int n)
 		return (squareroot(n, (n + 1) / 2));
 }
 /**
- * squareroot - checks if perfect square
- * @n: input
- * @i: counter
- * Return: if square root
+ * sqrt2 - Makes possible to evaluate from 1 to n
+ * @a: same number as n
+ * @b: number that iterates from 1 to n
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
  */
-int squareroot(int n, int i)
+int sqrt2(int a, int b)
 {
-	if (i < 1)
+	if (b * b == a)
+		return (b);
+	else if (b * b > a)
 		return (-1);
-	else if (i * i == n)
-		return (i);
-	else
-		return (squareroot(n, i - 1));
+	return (sqrt2(a, b + 1));
 }
