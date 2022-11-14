@@ -1,8 +1,3 @@
-/*
- * File: 1-init_dog.c
- * Auth: Muideen A Ilori
- */
-
 #include <stdlib.h>
 #include "dog.h"
 
