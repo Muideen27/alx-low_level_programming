@@ -2,8 +2,8 @@
 #define LISTS_H
 
 /**
- * FILE: Lists.h
- * AUTH: Muideen A Ilori
+ * File: Lists.h
+ * Auth: Muideen A Ilori
  */
 
 #include <stdio.h>
