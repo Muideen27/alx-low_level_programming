@@ -4,6 +4,7 @@
  */
 
 #include "lists.h"
+#include <stdlib.h>
 
 /**
  * add_nodeint_end - Adds a new node at the
@@ -17,25 +18,20 @@
  */
 listint_t *add_nodeint_end(listint_t **head, const int n)
 {
-	listint_t *new, *last;
+	listint_t *new;
+	listint_t *current;
 
+	current = *head;
 	new = malloc(sizeof(listint_t));
 	if (new == NULL)
 		return (NULL);
-
 	new->n = n;
 	new->next = NULL;
-
-	if (*head == NULL)
-		*head = new;
-
+	while (current != NULL && current->next != NULL)
+		current = current->next;
+	if (current != NULL)
+		current->next = new;
 	else
-	{
-		last = *head;
-		while (last->next != NULL)
-			last = last->next;
-		last->next = new;
-	}
-
-	return (*head);
+		*head = new;
+	return (new);
 }
