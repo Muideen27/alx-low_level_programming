@@ -4,6 +4,7 @@ i/*
  */
 
 #include "lists.h"
+#include <stdlib.h>
 
 /**
  * insert_nodeint_at_index - Inserts a new node to a listint_t
@@ -17,34 +18,39 @@ i/*
  * Return: If the function fails - NULL.
  *         Otherwise - the address of the new node.
  */
-listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
+listint_t *insert_nodeint_at_index(listint_t **head, unsigned int index, int n)
 {
-	listint_t *new, *copy = *head;
-	unsigned int node;
+	listint_t *current;
+	listint_t *new;
+	unsigned int count;
 
+	if (head == NULL)
+		return (NULL);
+	current = *head;
+	count = 0;
+	if (current == NULL && index != 0)
+		return (NULL);
 	new = malloc(sizeof(listint_t));
 	if (new == NULL)
 		return (NULL);
-
 	new->n = n;
-
-	if (idx == 0)
+	if (index == 0)
 	{
-		new->next = copy;
+		new->next = *head;
 		*head = new;
 		return (new);
 	}
-
-	for (node = 0; node < (idx - 1); node++)
+	while (count != index - 1)
 	{
-		if (copy == NULL || copy->next == NULL)
+		current = current->next;
+		if (current == NULL)
+		{
+			free(new);
 			return (NULL);
-
-		copy = copy->next;
+		}
+		count++;
 	}
-
-	new->next = copy->next;
-	copy->next = new;
-
+	new->next = current->next;
+	current->next = new;
 	return (new);
 }
