@@ -6,12 +6,12 @@
  * Auth: Muideen A Ilori
  */
 
-#include<stddef.h>
-#include<stdarg.h>
-#include<string.h>
-#include<stdio.h>
-#include<stdlib.h>
-#include<math.h>
+#include <stddef.h>
+#include <stdarg.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 /*Prototype*/
 int _putchar(char c);
