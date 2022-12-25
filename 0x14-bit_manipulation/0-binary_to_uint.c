@@ -1,11 +1,4 @@
-/**
- * File: 0-binary_to_uint.c
- * Auth: Muideen
- */
-
-#include <stdio.h>
 #include "main.h"
-
 /**
  * binary_to_uint - Entry Point
  * @b: const char
