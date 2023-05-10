@@ -1,5 +1,4 @@
 #include "search_algos.h"
-#include <math.h>
 /**
  * jump_search - function that uses jump search
  * @array: array to search on
